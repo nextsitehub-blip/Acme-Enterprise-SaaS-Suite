@@ -1,0 +1,6 @@
+{
+  "name": "Acme Enterprise SaaS Suite",
+  "description": "A comprehensive cloud operations platform built for modern enterprises, combining high-density analytics, operational intelligence, and executive dashboards into one powerful visual workspace.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
