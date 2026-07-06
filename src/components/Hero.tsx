@@ -192,7 +192,7 @@ export default function Hero() {
                 borderColor: "rgba(255,255,255,0.2)"
               }}
               whileTap={{ scale: 0.98 }}
-              className="px-7 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 font-semibold text-white text-sm flex items-center gap-2.5 shadow-[0_4px_30px_rgba(59,130,246,0.25)] border border-white/5 transition-all cursor-pointer relative overflow-hidden group"
+              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 font-semibold text-white text-sm flex items-center justify-center gap-2.5 shadow-[0_4px_30px_rgba(59,130,246,0.25)] border border-white/5 transition-all cursor-pointer relative overflow-hidden group"
             >
               {/* Button light sweep effect */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
@@ -204,7 +204,7 @@ export default function Hero() {
               onClick={() => document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" })}
               whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
               whileTap={{ scale: 0.98 }}
-              className="px-7 py-4 rounded-xl border border-white/10 bg-white/5 font-semibold text-[#f8fafc] text-sm flex items-center gap-2.5 transition-all cursor-pointer"
+              className="w-full sm:w-auto px-7 py-4 rounded-xl border border-white/10 bg-white/5 font-semibold text-[#f8fafc] text-sm flex items-center justify-center gap-2.5 transition-all cursor-pointer"
             >
               <Play className="w-3.5 h-3.5 fill-white text-white" />
               Watch Live Tour
@@ -310,7 +310,7 @@ export default function Hero() {
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
                   <span className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
                 </div>
-                <div className="h-5 w-44 bg-white/5 rounded-full border border-white/5 flex items-center justify-center">
+                <div className="h-5 flex-1 max-w-[176px] mx-4 bg-white/5 rounded-full border border-white/5 flex items-center justify-center">
                   <Globe className="w-3 h-3 text-slate-500 mr-1.5" />
                   <span className="text-[9px] font-mono text-slate-400">console.acme.cloud</span>
                 </div>

@@ -275,7 +275,7 @@ export default function LiveDashboard({ activeTab: externalTab }: LiveDashboardP
 
                   {/* CUSTOM SVG CHART WITH INTERACTIVE CROSSHAIR */}
                   <div className="relative">
-                    <svg className="w-full h-[180px] overflow-visible" viewBox={`0 0 ${width} ${height}`}>
+                    <svg className="w-full h-[180px] overflow-visible" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none">
                       <defs>
                         {/* Area Gradient */}
                         <linearGradient id="chartGlow" x1="0" y1="0" x2="0" y2="1">

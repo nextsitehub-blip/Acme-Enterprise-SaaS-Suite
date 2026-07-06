@@ -3,12 +3,14 @@ import { motion, AnimatePresence } from "motion/react";
 import { 
   X, Calendar, Clock, Check, ArrowRight, ArrowLeft, 
   Sparkles, ShieldCheck, Mail, Globe, Server, User, 
-  ChevronRight, Compass, Info, Building, Database, ArrowUpRight
+  ChevronRight, Compass, Info, Building, Database, ArrowUpRight,
+  AlertCircle
 } from "lucide-react";
 
 export default function BookDemoModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
+  const [errorMessage, setErrorMessage] = useState("");
   
   // Form states
   const [formData, setFormData] = useState({
@@ -61,6 +63,7 @@ export default function BookDemoModal() {
     const handleOpenModal = () => {
       setIsOpen(true);
       setStep(1);
+      setErrorMessage("");
     };
 
     window.addEventListener("open-demo-modal", handleOpenModal);
@@ -93,15 +96,16 @@ export default function BookDemoModal() {
   };
 
   const handleNextStep = () => {
+    setErrorMessage("");
     if (step === 1) {
       if (!formData.name || !formData.email || !formData.company) {
-        alert("Please fill in your name, email, and company first.");
+        setErrorMessage("Please fill in your name, email, and company first.");
         return;
       }
       setStep(2);
     } else if (step === 2) {
       if (!selectedDate || !selectedTime) {
-        alert("Please select a date and time slot first.");
+        setErrorMessage("Please select a date and time slot first.");
         return;
       }
       setStep(3);
@@ -109,6 +113,7 @@ export default function BookDemoModal() {
   };
 
   const handlePrevStep = () => {
+    setErrorMessage("");
     setStep(prev => Math.max(1, prev - 1));
   };
 
@@ -132,7 +137,7 @@ export default function BookDemoModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            className="relative w-full max-w-xl rounded-3xl border border-white/10 bg-slate-900/40 p-6 md:p-8 shadow-[0_30px_70px_rgba(0,0,0,0.8)] overflow-hidden z-10"
+            className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-slate-900/40 p-4 sm:p-6 md:p-8 shadow-[0_30px_70px_rgba(0,0,0,0.8)] z-10 no-scrollbar"
           >
             {/* Corner glowing overlays */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -188,6 +193,21 @@ export default function BookDemoModal() {
                 );
               })}
             </div>
+
+            {/* Error Message banner */}
+            <AnimatePresence>
+              {errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className="mb-6 p-3 rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 text-xs flex items-center gap-2.5 relative z-10"
+                >
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>{errorMessage}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Steps Container */}
             <div className="relative z-10">
